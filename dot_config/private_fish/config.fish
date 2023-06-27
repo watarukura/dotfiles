@@ -12,6 +12,7 @@ set -g fish_user_paths "/usr/local/opt/openssl/bin" $fish_user_paths
 set -g fish_user_paths "$HOME/.cargo/bin" $fish_user_paths
 set -g fish_user_paths "$HOME/go/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
+set -g fish_user_paths "/Users/watarukura/.local/share/aquaproj-aqua/bin/" $fish_user_paths
 set -x EDITOR 'vim'
 
 # less
@@ -123,6 +124,18 @@ end
 function date_dir
   set --local dir_name (date +'%Y%m%d')_$argv[1]
   mkdir -p $dir_name && cd $dir_name
+end
+
+function cdr
+  set --local git_dir (git rev-parse --git-dir)
+  cd "$git_dir/.."
+end
+
+function awsp
+  grep "profile .*Administrator" ~/.aws/config |
+  cut -f2 -d' ' |
+  tr -d ']' |
+  fzf
 end
 
 # The next line updates PATH for the Google Cloud SDK.
