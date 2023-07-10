@@ -15,13 +15,13 @@ packages:
 - name: x-motemen/ghq@v1.4.2
 - name: junegunn/fzf@0.42.0
 - name: direnv/direnv@v2.32.3
-- name: aquasecurity/trivy@v0.43.0
-- name: goodwithtech/dockle@v0.4.11
+- name: aquasecurity/trivy@v0.43.1
+- name: goodwithtech/dockle@v0.4.13
 - name: grafana/k6@v0.45.0
 - name: rhysd/actionlint@v1.6.25
 - name: fujiwara/ecsta@v0.3.1
 - name: hashicorp/terraform@v1.5.2
 - name: terraform-linters/tflint@v0.47.0
-- name: evilmartians/lefthook@v1.4.3
+- name: evilmartians/lefthook@v1.4.4
 - name: k1LoW/runn@v0.75.3
 - name: 99designs/aws-vault@v7.2.0
