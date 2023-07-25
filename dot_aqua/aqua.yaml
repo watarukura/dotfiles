@@ -25,3 +25,4 @@ packages:
 - name: evilmartians/lefthook@v1.4.7
 - name: k1LoW/runn@v0.77.0
 - name: 99designs/aws-vault@v7.2.0
+- name: aws/aws-cli@2.13.3
