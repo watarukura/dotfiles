@@ -9,7 +9,7 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.35.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.37.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: cli/cli@v2.32.1
 - name: x-motemen/ghq@v1.4.2
@@ -19,10 +19,10 @@ packages:
 - name: goodwithtech/dockle@v0.4.13
 - name: grafana/k6@v0.45.1
 - name: rhysd/actionlint@v1.6.25
-- name: fujiwara/ecsta@v0.3.4
+- name: fujiwara/ecsta@v0.3.5
 - name: hashicorp/terraform@v1.5.5
 - name: terraform-linters/tflint@v0.47.0
 - name: evilmartians/lefthook@v1.4.8
-- name: k1LoW/runn@v0.80.1
+- name: k1LoW/runn@v0.80.2
 - name: 99designs/aws-vault@v7.2.0
 - name: aws/aws-cli@2.13.3
