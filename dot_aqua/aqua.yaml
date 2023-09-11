@@ -26,3 +26,4 @@ packages:
 - name: k1LoW/runn@v0.82.0
 - name: 99designs/aws-vault@v7.2.0
 - name: aws/aws-cli@2.13.3
+- name: jqlang/jq@jq-1.7
