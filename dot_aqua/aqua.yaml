@@ -27,4 +27,4 @@ packages:
 - name: 99designs/aws-vault@v7.2.0
 - name: aws/aws-cli@2.13.24
 - name: jqlang/jq@jq-1.7
-- name: sharkdp/hyperfine@v1.17.0
+- name: sharkdp/hyperfine@v1.18.0
