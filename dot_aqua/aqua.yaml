@@ -9,7 +9,7 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.92.2 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.93.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: cli/cli@v2.39.2
 - name: x-motemen/ghq@v1.4.2
@@ -25,6 +25,6 @@ packages:
 - name: evilmartians/lefthook@v1.5.4
 - name: k1LoW/runn@v0.91.0
 - name: 99designs/aws-vault@v7.2.0
-- name: aws/aws-cli@2.14.1
+- name: aws/aws-cli@2.14.2
 - name: jqlang/jq@jq-1.7
 - name: sharkdp/hyperfine@v1.18.0
