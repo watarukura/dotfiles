@@ -144,6 +144,4 @@ if [ -f '/Users/watarukura/Downloads/google-cloud-sdk/path.fish.inc' ]
   . /Users/watarukura/Downloads/google-cloud-sdk/path.fish.inc
 end
 
-
-
 source /usr/local/opt/asdf/libexec/asdf.fish

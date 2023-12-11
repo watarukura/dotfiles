@@ -28,3 +28,4 @@ packages:
 - name: aws/aws-cli@2.15.0
 - name: jqlang/jq@jq-1.7
 - name: sharkdp/hyperfine@v1.18.0
+- name: wagoodman/dive@v0.11.0
