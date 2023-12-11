@@ -13,6 +13,7 @@ set -g fish_user_paths "$HOME/.cargo/bin" $fish_user_paths
 set -g fish_user_paths "$HOME/go/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
 set -g fish_user_paths "/Users/watarukura/.local/share/aquaproj-aqua/bin/" $fish_user_paths
+fish_add_path /usr/local/opt/mysql-client@8.0/bin
 set -x EDITOR 'vim'
 
 # less
@@ -140,6 +141,9 @@ end
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/watarukura/Downloads/google-cloud-sdk/path.fish.inc' ]
-  . '/Users/watarukura/Downloads/google-cloud-sdk/path.fish.inc';
+  . /Users/watarukura/Downloads/google-cloud-sdk/path.fish.inc
 end
 
+
+
+source /usr/local/opt/asdf/libexec/asdf.fish
