@@ -19,7 +19,7 @@ packages:
 - name: goodwithtech/dockle@v0.4.13
 - name: grafana/k6@v0.48.0
 - name: rhysd/actionlint@v1.6.26
-- name: fujiwara/ecsta@v0.4.1
+- name: fujiwara/ecsta@v0.4.2
 - name: hashicorp/terraform@v1.6.6
 - name: terraform-linters/tflint@v0.49.0
 - name: evilmartians/lefthook@v1.5.5
