@@ -16,7 +16,7 @@ packages:
 - name: junegunn/fzf@0.46.1
 - name: direnv/direnv@v2.33.0
 - name: aquasecurity/trivy@v0.49.0
-- name: goodwithtech/dockle@v0.4.13
+- name: goodwithtech/dockle@v0.4.14
 - name: grafana/k6@v0.49.0
 - name: rhysd/actionlint@v1.6.26
 - name: fujiwara/ecsta@v0.4.3
@@ -25,7 +25,7 @@ packages:
 - name: evilmartians/lefthook@v1.6.1
 - name: k1LoW/runn@v0.98.3
 - name: 99designs/aws-vault@v7.2.0
-- name: aws/aws-cli@2.15.16
+- name: aws/aws-cli@2.15.17
 - name: jqlang/jq@jq-1.7.1
 - name: sharkdp/hyperfine@v1.18.0
-- name: wagoodman/dive@v0.11.0
+- name: wagoodman/dive@v0.12.0
