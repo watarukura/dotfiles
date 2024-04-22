@@ -15,7 +15,7 @@ packages:
 - name: x-motemen/ghq@v1.6.1
 - name: junegunn/fzf@0.50.0
 - name: direnv/direnv@v2.34.0
-- name: aquasecurity/trivy@v0.50.1
+- name: aquasecurity/trivy@v0.50.2
 - name: goodwithtech/dockle@v0.4.14
 - name: grafana/k6@v0.50.0
 - name: rhysd/actionlint@v1.6.27
@@ -23,7 +23,7 @@ packages:
 - name: hashicorp/terraform@v1.8.1
 - name: terraform-linters/tflint@v0.50.3
 - name: evilmartians/lefthook@v1.6.10
-- name: k1LoW/runn@v0.103.4
+- name: k1LoW/runn@v0.104.0
 - name: 99designs/aws-vault@v7.2.0
 - name: aws/aws-cli@2.15.40
 - name: jqlang/jq@jq-1.7.1
