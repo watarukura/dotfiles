@@ -15,7 +15,7 @@ packages:
 - name: x-motemen/ghq@v1.6.1
 - name: junegunn/fzf@0.52.1
 - name: direnv/direnv@v2.34.0
-- name: aquasecurity/trivy@v0.51.1
+- name: aquasecurity/trivy@v0.51.2
 - name: goodwithtech/dockle@v0.4.14
 - name: grafana/k6@v0.51.0
 - name: rhysd/actionlint@v1.7.0
