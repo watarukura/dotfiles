@@ -18,7 +18,7 @@ packages:
 - name: aquasecurity/trivy@v0.51.4
 - name: goodwithtech/dockle@v0.4.14
 - name: grafana/k6@v0.51.0
-- name: rhysd/actionlint@v1.7.0
+- name: rhysd/actionlint@v1.7.1
 - name: fujiwara/ecsta@v0.4.5
 - name: hashicorp/terraform@v1.8.4
 - name: terraform-linters/tflint@v0.51.1
