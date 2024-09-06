@@ -1,20 +1,21 @@
 # path
-set -x PATH ~/bin $PATH
-set -g fish_user_paths "/usr/local/opt/bzip2/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/libiconv/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/icu4c/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/icu4c/sbin" $fish_user_paths
-set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/php@8.0/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/bin" $fish_user_paths
-set -g fish_user_paths "$HOME/.local/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/openssl/bin" $fish_user_paths
-set -g fish_user_paths "$HOME/.cargo/bin" $fish_user_paths
-set -g fish_user_paths "$HOME/go/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
-set -g fish_user_paths "/opt/homebrew/bin" $fish_user_paths
-set -g fish_user_paths "$HOME/.local/share/aquaproj-aqua/bin/" $fish_user_paths
-fish_add_path /usr/local/opt/mysql-client@8.0/bin
+fish_add_path "$HOME/bin"
+fish_add_path "/usr/local/opt/bzip2/bin"
+fish_add_path "/usr/local/opt/libiconv/bin"
+fish_add_path "/usr/local/opt/icu4c/bin"
+fish_add_path "/usr/local/opt/icu4c/sbin"
+fish_add_path "/usr/local/sbin"
+fish_add_path "/usr/local/opt/php@8.0/bin"
+fish_add_path "/usr/local/bin"
+fish_add_path "$HOME/.local/bin"
+fish_add_path "/usr/local/opt/openssl/bin"
+fish_add_path "$HOME/.cargo/bin"
+fish_add_path "$HOME/go/bin"
+fish_add_path "/opt/homebrew/opt/openjdk/bin"
+fish_add_path "/opt/homebrew/bin"
+fish_add_path "$HOME/.local/share/aquaproj-aqua/bin/"
+fish_add_path "/usr/local/opt/mysql-client@8.0/bin"
+fish_add_path "/opt/homebrew/opt/mysql@8.0/bin"
 set -x EDITOR 'vim'
 
 # less
@@ -43,16 +44,19 @@ alias python='python3'
 # golang
 set -x GOPATH ~/
 set -x GO11MODULE on
-
-# pipenv
-set -x PIPENV_VENV_IN_PROJECT true
-#eval (pipenv --completion)
+set -x GOROOT (aqua which golang/go | sed -e 's;/bin/go$;;')
 
 # direnv
 eval (direnv hook fish)
 
 # aws
-complete -c aws -f -a '(begin; set -lx COMP_SHELL fish; set -lx COMP_LINE (commandline); /usr/local/bin/aws_completer; end)'
+complete -c aws -f -a '(
+  begin
+    set -lx COMP_SHELL fish
+    set -lx COMP_LINE (commandline)
+    aws_completer
+  end
+)'
 
 # lua
 set -g fish_user_paths "/usr/local/opt/luajit-openresty/bin" $fish_user_paths
