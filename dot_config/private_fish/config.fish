@@ -109,6 +109,7 @@ end
 
 function awsp
   grep "profile " ~/.aws/config |
+  grep -v "^;" |
   cut -f2 -d' ' |
   tr -d ']' |
   fzf
