@@ -8,7 +8,15 @@
       "groupName": "aqua devDependencies",
       "matchFileNames": [
         "aqua.ya?ml"
-      ]
+      ],
+      "automerge": true
+    },
+    {
+      "matchPackagePatterns": [
+        "aquaproj/*",
+        "actions/*"
+      ],
+      "automerge": true
     }
   ]
 }

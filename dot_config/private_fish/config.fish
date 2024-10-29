@@ -5,7 +5,6 @@ fish_add_path "/usr/local/opt/libiconv/bin"
 fish_add_path "/usr/local/opt/icu4c/bin"
 fish_add_path "/usr/local/opt/icu4c/sbin"
 fish_add_path "/usr/local/sbin"
-fish_add_path "/usr/local/opt/php@8.0/bin"
 fish_add_path "/usr/local/bin"
 fish_add_path "$HOME/.local/bin"
 fish_add_path "/usr/local/opt/openssl/bin"
@@ -72,10 +71,6 @@ set -gx LDFLAGS "-L/usr/local/opt/curl/lib"
 
 # supership
 starship init fish | source
-
-# volta
-set -gx VOLTA_HOME "$HOME/.volta"
-set -gx PATH "$VOLTA_HOME/bin" $PATH
 
 # functions
 function brew_all_update
