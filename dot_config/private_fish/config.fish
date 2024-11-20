@@ -74,6 +74,9 @@ set -gx LDFLAGS "-L/usr/local/opt/curl/lib"
 # supership
 starship init fish | source
 
+# mise
+eval "$(mise activate fish)"
+
 # functions
 function brew_all_update
     brew update
