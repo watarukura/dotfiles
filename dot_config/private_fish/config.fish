@@ -59,17 +59,10 @@ complete -c aws -f -a '(
   end
 )'
 
-# lua
-set -g fish_user_paths "/usr/local/opt/luajit-openresty/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
-set -gx PKG_CONFIG_PATH "/usr/local/opt/luajit-openresty/lib/pkgconfig"
-set -gx CPPFLAGS "-I/usr/local/opt/luajit-openresty/include"
-set -gx LDFLAGS "-L/usr/local/opt/luajit-openresty/lib"
-
 # curl
-set -gx PKG_CONFIG_PATH "/usr/local/opt/curl/lib/pkgconfig"
-set -gx CPPFLAGS "-I/usr/local/opt/curl/include"
-set -gx LDFLAGS "-L/usr/local/opt/curl/lib"
+set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/curl/lib/pkgconfig"
+set -gx CPPFLAGS "-I/opt/homebrew/opt/curl/include"
+set -gx LDFLAGS "-L/opt/homebrew/opt/curl/lib"
 
 # supership
 starship init fish | source
