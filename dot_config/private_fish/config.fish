@@ -48,7 +48,7 @@ set -x GO11MODULE on
 set -x GOROOT (aqua which golang/go | sed -e 's;/bin/go$;;')
 
 # direnv
-eval (direnv hook fish)
+direnv hook fish | source
 
 # aws
 complete -c aws -f -a '(
