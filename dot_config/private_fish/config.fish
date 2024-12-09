@@ -60,6 +60,9 @@ complete -c aws -f -a '(
   end
 )'
 
+# terraform
+set -gx TF_PLUGIN_CACHE_DIR "$HOME/.terraform.d/plugin-cache"
+
 # curl
 set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/curl/lib/pkgconfig"
 set -gx CPPFLAGS "-I/opt/homebrew/opt/curl/include"
