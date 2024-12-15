@@ -23,7 +23,7 @@ packages:
 - name: hashicorp/terraform@v1.10.2
 - name: terraform-linters/tflint@v0.54.0
 - name: evilmartians/lefthook@v1.9.2
-- name: k1LoW/runn@v0.123.1
+- name: k1LoW/runn@v0.124.0
 - name: 99designs/aws-vault@v7.2.0
 - name: aws/aws-cli@2.22.17
 - name: jqlang/jq@jq-1.7.1
