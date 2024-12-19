@@ -25,7 +25,7 @@ packages:
 - name: evilmartians/lefthook@v1.9.2
 - name: k1LoW/runn@v0.124.1
 - name: 99designs/aws-vault@v7.2.0
-- name: aws/aws-cli@2.22.19
+- name: aws/aws-cli@2.22.20
 - name: jqlang/jq@jq-1.7.1
 - name: sharkdp/hyperfine@v1.19.0
 - name: wagoodman/dive@v0.12.0
