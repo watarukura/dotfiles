@@ -7,6 +7,8 @@ window-theme = ghostty
 background-opacity = 0.85
 background-blur-radius = 20
 macos-titlebar-style = transparent
+font-feature = -calt
+font-feature = -dlig
 
 keybind = clear
 keybind = super+ctrl+equal=equalize_splits
