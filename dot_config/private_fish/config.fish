@@ -87,21 +87,18 @@ function git_switch_delete
 end
 
 function date_dir
-  set --local dir_name (date +'%Y%m%d')_$argv[1]
-  mkdir -p $dir_name && cd $dir_name
+    set --local dir_name (date +'%Y%m%d')_$argv[1]
+    mkdir -p $dir_name && cd $dir_name
 end
 
 function cdr
-  set --local git_dir (git rev-parse --git-dir)
-  cd "$git_dir/.."
+    set --local git_dir (git rev-parse --git-dir)
+    cd "$git_dir/.."
 end
 
 function awsp
-  grep "\[profile " ~/.aws/config |
-  grep -v "^;" |
-  cut -f2 -d' ' |
-  tr -d ']' |
-  fzf
+    aws configure list-profiles \
+        | fzf
 end
 
 # The next line updates PATH for the Google Cloud SDK.
