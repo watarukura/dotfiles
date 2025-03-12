@@ -20,7 +20,7 @@ packages:
 - name: grafana/k6@v0.57.0
 - name: rhysd/actionlint@v1.7.7
 - name: fujiwara/ecsta@v0.6.2
-- name: hashicorp/terraform@v1.11.1
+- name: hashicorp/terraform@v1.11.2
 - name: terraform-linters/tflint@v0.55.1
 - name: evilmartians/lefthook@v1.11.3
 - name: k1LoW/runn@v0.128.3
