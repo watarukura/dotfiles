@@ -5,10 +5,10 @@ fish_add_path "$HOME/.cargo/bin"
 fish_add_path "$HOME/go/bin"
 fish_add_path "/opt/homebrew/opt/openjdk/bin"
 fish_add_path "/opt/homebrew/bin"
+fish_add_path "$HOME/.local/share/mise/shims"
 fish_add_path "$HOME/.local/share/aquaproj-aqua/bin/"
 fish_add_path "/opt/homebrew/opt/mysql@8.0/bin"
 fish_add_path "/opt/homebrew/sbin"
-fish_add_path "$HOME/.local/share/mise/shims"
 fish_add_path "/opt/homebrew/opt/curl/bin"
 set -x EDITOR 'vim'
 
