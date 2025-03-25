@@ -22,7 +22,7 @@ packages:
 - name: fujiwara/ecsta@v0.6.2
 - name: hashicorp/terraform@v1.11.2
 - name: terraform-linters/tflint@v0.55.1
-- name: evilmartians/lefthook@v1.11.3
+- name: evilmartians/lefthook@v1.11.5
 - name: k1LoW/runn@v0.129.1
 - name: 99designs/aws-vault@v7.2.0
 - name: aws/aws-cli@2.25.2
