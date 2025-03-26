@@ -102,11 +102,16 @@ function awsp
 end
 
 function git_branch_prune
-    git branch \
-        | grep -v (git remote show origin | grep 'HEAD branch' | awk '{print $NF}') \
-        | xargs git branch -d
+    set --local org_repo (git config remote.origin.url | cut -d'/' -f4,5 | sed 's/.git$//')
+    set --local protected_branches (gh api "https://api.github.com/repos/$org_repo/branches" | \
+        jq -r '.[] | select(.protected == true) | .name' \
+        | tr '\n' '|' | rev | cut -c2- | rev)
+    set --local stale_branches (git branch | awk '{print $NF}' | grep -v -E "$protected_branches")
+    if [ -n "$stale_branches" ]
+        echo $stale_branches \
+            | xargs git branch -d
+    end
 end
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/watarukura/Downloads/google-cloud-sdk/path.fish.inc' ]
   . "$HOME/Downloads/google-cloud-sdk/path.fish.inc"
