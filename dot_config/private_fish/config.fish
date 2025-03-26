@@ -101,6 +101,12 @@ function awsp
         | fzf
 end
 
+function git_branch_prune
+    git branch \
+        | grep -v (git remote show origin | grep 'HEAD branch' | awk '{print $NF}') \
+        | xargs git branch -d
+end
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/watarukura/Downloads/google-cloud-sdk/path.fish.inc' ]
   . "$HOME/Downloads/google-cloud-sdk/path.fish.inc"
