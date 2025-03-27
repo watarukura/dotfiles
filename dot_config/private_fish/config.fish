@@ -5,7 +5,6 @@ fish_add_path "$HOME/.cargo/bin"
 fish_add_path "$HOME/go/bin"
 fish_add_path "/opt/homebrew/opt/openjdk/bin"
 fish_add_path "/opt/homebrew/bin"
-fish_add_path "$HOME/.local/share/mise/shims"
 fish_add_path "$HOME/.local/share/aquaproj-aqua/bin/"
 fish_add_path "/opt/homebrew/opt/mysql@8.0/bin"
 fish_add_path "/opt/homebrew/sbin"
@@ -62,9 +61,6 @@ set -gx LDFLAGS "-L/opt/homebrew/opt/curl/lib"
 
 # supership
 starship init fish | source
-
-# mise
-mise activate fish | source
 
 # functions
 function brew_all_update
