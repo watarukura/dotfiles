@@ -9,6 +9,7 @@ fish_add_path "$HOME/.local/share/aquaproj-aqua/bin/"
 fish_add_path "/opt/homebrew/opt/mysql@8.0/bin"
 fish_add_path "/opt/homebrew/sbin"
 fish_add_path "/opt/homebrew/opt/curl/bin"
+fish_add_path "$HOME/.npm-global/bin"
 set -x EDITOR 'vim'
 
 # less
