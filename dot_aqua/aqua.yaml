@@ -31,3 +31,4 @@ packages:
 - name: wagoodman/dive@v0.13.1
 - name: golang/go@go1.24.1
 - name: duckdb/duckdb@v1.2.1
+- name: nodejs/node@v22.14.0
