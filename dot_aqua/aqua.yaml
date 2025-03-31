@@ -24,3 +24,4 @@ packages:
 - name: golang/go@go1.24.1
 - name: duckdb/duckdb@v1.2.1
 - name: nodejs/node@v22.14.0
+- name: twistedpair/google-cloud-sdk@516.0.0
