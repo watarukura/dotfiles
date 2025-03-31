@@ -21,7 +21,7 @@ packages:
 - name: rhysd/actionlint@v1.7.7
 - name: fujiwara/ecsta@v0.6.2
 - name: hashicorp/terraform@v1.11.3
-- name: terraform-linters/tflint@v0.55.1
+- name: terraform-linters/tflint@v0.56.0
 - name: evilmartians/lefthook@v1.11.5
 - name: k1LoW/runn@v0.129.2
 - name: 99designs/aws-vault@v7.2.0
