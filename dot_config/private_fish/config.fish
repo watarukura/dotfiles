@@ -61,7 +61,9 @@ set -gx CPPFLAGS "-I/opt/homebrew/opt/curl/include"
 set -gx LDFLAGS "-L/opt/homebrew/opt/curl/lib"
 
 # supership
-starship init fish | source
+if [ $TERM_PROGRAM != "vscode" ]
+  starship init fish | source
+end
 
 # functions
 function brew_all_update
