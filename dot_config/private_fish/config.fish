@@ -63,6 +63,8 @@ set -gx LDFLAGS "-L/opt/homebrew/opt/curl/lib"
 # supership
 if [ "$TERM_PROGRAM" != "vscode" ]
   starship init fish | source
+else
+  . (code --locate-shell-integration-path fish)
 end
 
 # functions
