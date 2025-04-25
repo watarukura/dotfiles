@@ -102,6 +102,12 @@ function awsp
         | fzf
 end
 
+function clear_storage
+    aqua vacuum -d 1
+    uv cache clean
+    docker system prune
+end
+
 function git_branch_prune
     set --local org_repo (git config remote.origin.url | cut -d'/' -f4,5 | sed 's/.git$//')
     set --local protected_branches (gh api "https://api.github.com/repos/$org_repo/branches" | \
