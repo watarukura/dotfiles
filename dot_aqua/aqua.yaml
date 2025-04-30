@@ -23,6 +23,6 @@ packages:
 - name: golang/go@go1.24.2
 - name: duckdb/duckdb@v1.2.2
 - name: nodejs/node@v23.11.0
-- name: twistedpair/google-cloud-sdk@519.0.0
+- name: twistedpair/google-cloud-sdk@520.0.0
 - name: direnv/direnv@v2.36.0
 - name: suzuki-shunsuke/pinact@v3.0.5
