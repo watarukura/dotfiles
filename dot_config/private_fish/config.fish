@@ -108,6 +108,43 @@ function clear_storage
     docker system prune
 end
 
+function switch-php
+    if test (count $argv) -ne 1
+        echo "Usage: switch-php <version>"
+        echo "Example: switch-php 8.2"
+        return 1
+    end
+
+    set --local php_version $argv[1]
+    set --local old_php_version (php --version | head -1 | grep -oP "[789]\.[0-9]+\.[0-9]+" | cut -d'.' -f1,2)
+
+    if not brew list | grep -q "php@$php_version"
+        echo "php@$php_version is not installed."
+        return 1
+    end
+
+    echo "Switching from PHP $old_php_version to PHP $php_version ..."
+
+    remove_path "/opt/homebrew/opt/php@$old_php_version/bin"
+    brew link --overwrite --force php@$php_version
+    fish_add_path "/opt/homebrew/opt/php@$php_version/bin"
+    source ~/.config/fish/config.fish
+
+    if brew services list | grep -q "php@$php_version"
+        echo "Restarting php@$php_version service..."
+        brew services restart php@$php_version
+    end
+
+    php -v
+end
+
+function remove_path
+  if set -l index (contains -i "$argv" $fish_user_paths)
+    set -e fish_user_paths[$index]
+    echo "Removed $argv from the path"
+  end
+end
+
 function git_branch_prune
     set --local org_repo (git config remote.origin.url | cut -d'/' -f4,5 | sed 's/.git$//')
     set --local protected_branches (gh api "https://api.github.com/repos/$org_repo/branches" | \
