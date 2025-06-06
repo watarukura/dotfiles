@@ -20,7 +20,7 @@ packages:
 - name: aws/aws-cli@2.27.29
 - name: jqlang/jq@jq-1.8.0
 - name: sharkdp/hyperfine@v1.19.0
-- name: golang/go@go1.24.3
+- name: golang/go@go1.24.4
 - name: duckdb/duckdb@v1.3.0
 - name: nodejs/node@v24.1.0
 - name: twistedpair/google-cloud-sdk@525.0.0
