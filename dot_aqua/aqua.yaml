@@ -15,7 +15,7 @@ packages:
 - name: junegunn/fzf@v0.62.0
 - name: grafana/k6@v1.0.0
 - name: rhysd/actionlint@v1.7.7
-- name: fujiwara/ecsta@v0.6.2
+- name: fujiwara/ecsta@v0.7.0
 - name: 99designs/aws-vault@v7.2.0
 - name: aws/aws-cli@2.27.29
 - name: jqlang/jq@jq-1.8.0
