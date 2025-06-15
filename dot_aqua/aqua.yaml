@@ -25,4 +25,4 @@ packages:
 - name: nodejs/node@v24.2.0
 - name: twistedpair/google-cloud-sdk@526.0.1
 - name: direnv/direnv@v2.36.0
-- name: suzuki-shunsuke/pinact@v3.1.2
+- name: suzuki-shunsuke/pinact@v3.3.0
