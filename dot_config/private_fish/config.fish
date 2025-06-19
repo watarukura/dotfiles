@@ -88,7 +88,7 @@ function git_switch_delete
 end
 
 function date_dir
-    set --local dir_name (date +'%Y%m%d')_$argv[1]
+    set --local dir_name $HOME/Documents/(date +'%Y%m%d')_$argv[1]
     mkdir -p $dir_name && cd $dir_name
 end
 
