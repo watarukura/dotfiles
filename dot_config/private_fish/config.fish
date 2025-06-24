@@ -76,7 +76,11 @@ function brew_all_update
 end
 
 function random_string
-    cat /dev/urandom | base64 | fold -w 12 | head -n 1
+    if [ (count $argv) -eq 0 ]
+        cat /dev/urandom | base64 | fold -w 12 | head -n 1
+    else
+        cat /dev/urandom | base64 | fold -w $argv[1] | head -n 1
+    end
 end
 
 function git_switch
