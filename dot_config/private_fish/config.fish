@@ -160,6 +160,14 @@ function git_branch_prune
             | xargs git branch -d
     end
 end
+
+function gitnew
+    set -l branch $argv[1]
+    set -l base (count $argv) -ge 2; and set -l base $argv[2]; or set -l base master
+    git switch -c $branch $base
+    git config branch.$branch.gh-merge-base $base
+end
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/watarukura/Downloads/google-cloud-sdk/path.fish.inc' ]
   . "$HOME/Downloads/google-cloud-sdk/path.fish.inc"
