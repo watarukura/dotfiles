@@ -163,7 +163,10 @@ end
 
 function gitnew
     set -l branch $argv[1]
-    set -l base (count $argv) -ge 2; and set -l base $argv[2]; or set -l base release
+    set -l base release
+    if [ (count $argv) -ge 2 ]
+      set -l base $argv[2]
+    end
     git switch -c $branch $base
     git config branch.$branch.gh-merge-base $base
 end
