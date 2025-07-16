@@ -181,6 +181,7 @@ function memo
     # 前回日付を取得
     set prev (basename (ls | grep -oP "[0-9]{4}-[0-9]{2}-[0-9]{2}.md" | sort | tail -1) .md)
 
+    # 今日のメモがなければ作成
     if test -e $today_file
         echo "Opening today's memo: $today_file"
     else if test -e $template
@@ -190,6 +191,11 @@ function memo
     else
         echo "Template not found: $template"
         return 1
+    end
+
+    # 前回のメモに当日のメモへのリンク
+    if test -e "$prev.md"
+        sed "s/\[\[\]\]>/\[\[$today\]\]>/"  "$prev.md"
     end
 
     $editor $today_file
