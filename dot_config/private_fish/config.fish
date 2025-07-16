@@ -171,6 +171,30 @@ function gitnew
     git config branch.$branch.gh-merge-base $base
 end
 
+function memo
+    set memo_dir "$HOME/documents/kurashidian/kurashidian/メモ"
+    set template "$memo_dir/template.md"
+    set today (date +%Y-%m-%d)
+    set today_file "$memo_dir/$today.md"
+    set editor (or $EDITOR vim)
+
+    # 前回日付を取得
+    set prev (basename (ls | grep -oP "[0-9]{4}-[0-9]{2}-[0-9]{2}.md" | sort | tail -1) .md)
+
+    if test -e $today_file
+        echo "Opening today's memo: $today_file"
+    else if test -e $template
+        echo "Creating new memo from template: $today_file"
+        # <[[]] を <[[前日]] に書き換えて新規作成
+        sed "s/<\[\[\]\]/<\[\[$prev\]\]/" $template > $today_file
+    else
+        echo "Template not found: $template"
+        return 1
+    end
+
+    $editor $today_file
+end
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/watarukura/Downloads/google-cloud-sdk/path.fish.inc' ]
   . "$HOME/Downloads/google-cloud-sdk/path.fish.inc"
