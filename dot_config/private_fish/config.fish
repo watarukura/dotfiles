@@ -176,7 +176,7 @@ function memo
     set template "$memo_dir/template.md"
     set today (date +%Y-%m-%d)
     set today_file "$memo_dir/$today.md"
-    set editor (or $EDITOR vim)
+    set editor vim
 
     # 前回日付を取得
     set prev (basename (ls | grep -oP "[0-9]{4}-[0-9]{2}-[0-9]{2}.md" | sort | tail -1) .md)
