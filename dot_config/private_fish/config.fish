@@ -172,7 +172,7 @@ function gitnew
 end
 
 function memo
-    set memo_dir "$HOME/documents/kurashidian/kurashidian/メモ"
+    set memo_dir "$HOME/documents/kurashidian/kurashidian/memo"
     set template "$memo_dir/template.md"
     set today (date +%Y-%m-%d)
     set today_file "$memo_dir/$today.md"
