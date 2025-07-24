@@ -178,7 +178,7 @@ function memo
     set today_file "$memo_dir/$today.md"
     set editor vim
 
-    if test $argv[1] = "list"
+    if [ "$argv[1]" = "list" ]
         ls $memo_dir | fzf | xargs -o -I{} $editor $memo_dir/{}
         return
     end
