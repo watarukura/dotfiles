@@ -9,7 +9,7 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.391.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.392.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: x-motemen/ghq@v1.8.0
 - name: junegunn/fzf@v0.64.0
