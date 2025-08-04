@@ -182,6 +182,10 @@ function memo
         ls $memo_dir | fzf | xargs -o -I{} $editor $memo_dir/{}
         return
     end
+    if [ "$argv[1]" = "cd" ]
+        cd $memo_dir
+        return
+    end
 
     # 前回日付を取得
     pushd $memo_dir
