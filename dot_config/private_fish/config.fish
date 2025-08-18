@@ -4,8 +4,8 @@ fish_add_path "$HOME/.local/bin"
 fish_add_path "$HOME/.cargo/bin"
 fish_add_path "$HOME/go/bin"
 fish_add_path "/opt/homebrew/opt/openjdk/bin"
-fish_add_path "/opt/homebrew/bin"
 fish_add_path "$HOME/.local/share/aquaproj-aqua/bin/"
+fish_add_path "/opt/homebrew/bin"
 fish_add_path "/opt/homebrew/opt/mysql@8.0/bin"
 fish_add_path "/opt/homebrew/sbin"
 fish_add_path "/opt/homebrew/opt/curl/bin"
@@ -206,7 +206,7 @@ function memo
 
     # 前回のメモに当日のメモへのリンク
     if test -e "$prev.md"
-        sed "s/\[\[\]\]>/\[\[$today\]\]>/"  "$prev.md"
+        sed "s/\[\[\]\]>/\[\[$today\]\]>/" "$prev.md"
     end
 
     $editor $today_file
