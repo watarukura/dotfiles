@@ -38,7 +38,7 @@ alias python='python3'
 # golang
 set -x GOPATH ~/
 set -x GO11MODULE on
-set -x GOROOT (aqua which golang/go | sed -e 's;/bin/go$;;')
+set -x GOROOT (go env GOROOT)
 
 # direnv
 direnv hook fish | source
