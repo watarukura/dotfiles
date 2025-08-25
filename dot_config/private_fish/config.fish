@@ -39,6 +39,7 @@ alias python='python3'
 set -x GOPATH ~/
 set -x GO11MODULE on
 set -x GOROOT (go env GOROOT)
+fish_add_path "$GOROOT/bin"
 
 # direnv
 direnv hook fish | source
@@ -110,6 +111,7 @@ function clear_storage
     aqua vacuum -d 1
     uv cache clean
     docker system prune
+    brew cleanup
 end
 
 function switch-php
