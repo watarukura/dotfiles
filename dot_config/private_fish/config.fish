@@ -112,6 +112,7 @@ function clear_storage
     uv cache clean
     docker system prune
     brew cleanup
+    go clean -modcache
 end
 
 function switch-php
