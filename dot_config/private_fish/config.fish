@@ -217,6 +217,7 @@ end
 
 # zoxide
 # https://blog.atusy.net/2025/05/09/zoxide-with-ghq/
+zoxide init fish --no-cmd | source
 function __zoxide_list_missing
   diff \
     ( zoxide query --list | sort | psub ) \
