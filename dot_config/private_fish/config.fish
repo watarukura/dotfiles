@@ -215,6 +215,28 @@ function memo
     $editor $today_file
 end
 
+# zoxide
+# https://blog.atusy.net/2025/05/09/zoxide-with-ghq/
+function __zoxide_list_missing
+  diff \
+    ( zoxide query --list | sort | psub ) \
+    ( ghq list -p | sort | psub ) \
+    | grep '^> ' | string replace -r '^> ' ''
+end
+
+function __zoxide_add_missing
+  set -l missing ( __zoxide_list_missing )
+  if test ( count $missing ) -gt 0
+    zoxide add $missing
+  end
+end
+
+function zi --description 'zoxide wwith ghq'
+  __zoxide_add_missing
+  __zoxide_zi $argv || true
+end
+
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/watarukura/Downloads/google-cloud-sdk/path.fish.inc' ]
   . "$HOME/Downloads/google-cloud-sdk/path.fish.inc"
