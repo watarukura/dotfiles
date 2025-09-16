@@ -1,6 +1,6 @@
 quick-terminal-autohide = false
 quick-terminal-position = right
-quick-terminal-size = 300px,33%
+quick-terminal-size = 33%
 window-padding-x = 20
 window-padding-y = 5
 window-padding-balance = true
