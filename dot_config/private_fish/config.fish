@@ -209,7 +209,7 @@ function memo
 
     # 前回のメモに当日のメモへのリンク
     if test -e "$prev.md"
-        sed -i "s;\[\[\]\]>;\[\[$today\]\]>;" "$prev.md"
+        gsed -i "s;\[\[\]\]>;\[\[$today\]\]>;" "$prev.md"
     end
 
     $editor $today_file
