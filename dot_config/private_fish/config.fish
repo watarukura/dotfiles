@@ -113,6 +113,7 @@ function clear_storage
     docker system prune
     brew cleanup
     go clean -modcache
+    nix-collect-garbage
 end
 
 function switch-php
