@@ -110,10 +110,11 @@ end
 function clear_storage
     aqua vacuum -d 1
     uv cache clean
-    docker system prune
+    docker system prune --volumes
     brew cleanup
     go clean -modcache
     nix-collect-garbage
+    npm cache clean --force
 end
 
 function switch-php
