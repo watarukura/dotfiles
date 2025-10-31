@@ -109,7 +109,7 @@ end
 
 function clear_storage
     aqua vacuum -d 1
-    uv cache clean
+    uv cache clean --force
     docker system prune --volumes
     brew cleanup
     go clean -modcache
@@ -236,7 +236,7 @@ function __zoxide_add_missing
   end
 end
 
-function zi --description 'zoxide wwith ghq'
+function zi --description 'zoxide with ghq'
   __zoxide_add_missing
   __zoxide_zi $argv || true
 end
