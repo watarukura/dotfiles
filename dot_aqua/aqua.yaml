@@ -21,6 +21,6 @@ packages:
 - name: jqlang/jq@jq-1.8.1
 - name: duckdb/duckdb@v1.4.1
 - name: nodejs/node@v24.11.0
-- name: twistedpair/google-cloud-sdk@545.0.0
+- name: twistedpair/google-cloud-sdk@546.0.0
 - name: direnv/direnv@v2.37.1
 - name: suzuki-shunsuke/pinact@v3.4.2
