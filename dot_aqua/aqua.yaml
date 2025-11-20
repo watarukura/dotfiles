@@ -17,7 +17,7 @@ packages:
 - name: rhysd/actionlint@v1.7.8
 - name: fujiwara/ecsta@v0.7.3
 - name: 99designs/aws-vault@v7.2.0
-- name: aws/aws-cli@2.32.1
+- name: aws/aws-cli@2.32.2
 - name: jqlang/jq@jq-1.8.1
 - name: duckdb/duckdb@v1.4.2
 - name: nodejs/node@v24.11.1
