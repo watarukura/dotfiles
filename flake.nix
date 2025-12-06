@@ -13,14 +13,16 @@
   }: {
     packages.aarch64-darwin.my-packages = nixpkgs.legacyPackages.aarch64-darwin.buildEnv {
       name = "my-packages-list";
-      paths = with nixpkgs.legacyPackages.aarch64-darwin; [
-        git
-        tig
-        curl
-        fish
-        alejandra
-      ]
-      ++ [neovim-nightly-overlay.packages.aarch64-darwin.neovim];
+      paths = with nixpkgs.legacyPackages.aarch64-darwin;
+        [
+          git
+          tig
+          curl
+          fish
+          alejandra
+          gh
+        ]
+        ++ [neovim-nightly-overlay.packages.aarch64-darwin.neovim];
     };
   };
 }
