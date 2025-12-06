@@ -27,7 +27,6 @@ in {
       git
       tig
       curl
-      fish
       alejandra
       gh
       neovim
