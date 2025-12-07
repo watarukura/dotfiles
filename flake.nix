@@ -27,9 +27,9 @@
     apps.${system}.update = {
       type = "app";
       program = toString (pkgs.writeShellScript "update-script" ''
-        nix flake update
-        nix run nixpkgs#home-manager -- switch --flake .#myHomeConfig
-	sudo nix run nix-darwin -- switch --flake .#my-darwin
+               nix flake update
+               nix run nixpkgs#home-manager -- switch --flake .#myHomeConfig
+        sudo nix run nix-darwin -- switch --flake .#my-darwin
       '');
     };
 

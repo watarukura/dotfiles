@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-
   # nix自体の設定
   nix = {
     optimise.automatic = true;
@@ -26,13 +25,13 @@
     defaults = {
       NSGlobalDomain = {
         AppleShowAllExtensions = true;
-	KeyRepeat = 1;
-	InitialKeyRepeat = 12;
+        KeyRepeat = 1;
+        InitialKeyRepeat = 12;
       };
       finder = {
         # 隠しファイルを常に表示する
         AppleShowAllFiles = true;
-	# 拡張子を常に表示する
+        # 拡張子を常に表示する
         AppleShowAllExtensions = true;
       };
       dock = {

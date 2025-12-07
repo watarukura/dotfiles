@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   homebrew = {
     enable = true;
     onActivation = {
@@ -25,6 +24,8 @@
       "awscli"
       "aqua"
       "starship"
+      "zsh-completions"
+      "chezmoi"
     ];
     taps = [
     ];
