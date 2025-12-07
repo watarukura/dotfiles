@@ -44,6 +44,7 @@
       "docker-desktop"
       "google-japanese-ime"
       "karabiner-elements"
+      "slack"
 
       ### Fonts
       "font-google-sans-code"
