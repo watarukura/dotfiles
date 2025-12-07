@@ -24,8 +24,10 @@
       "awscli"
       "aqua"
       "starship"
-      "zsh-completions"
       "chezmoi"
+      "zsh-completions"
+      "zsh-autosuggestions"
+      "zsh-syntax-highlighting"
     ];
     taps = [
     ];
