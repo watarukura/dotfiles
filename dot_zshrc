@@ -46,7 +46,7 @@ export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
 # functions
 function random_string() {
-    if [ (count $argv) -eq 0 ]; then
+    if [ $# -eq 0 ]; then
         cat /dev/urandom | base64 | fold -w 12 | head -n 1
     else
         cat /dev/urandom | base64 | fold -w $1 | head -n 1
