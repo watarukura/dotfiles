@@ -45,6 +45,7 @@
       "google-japanese-ime"
       "karabiner-elements"
       "slack"
+      "rectangle"
 
       ### Fonts
       "font-google-sans-code"

@@ -30,6 +30,7 @@ in {
       alejandra
       gh
       neovim
+      lefthook
     ];
   };
 
