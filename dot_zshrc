@@ -1,5 +1,5 @@
 export EDITOR=nvim
-export PATH=$HOME/.nix-profile/bin:/opt/homebrew/bin:$HOME/.local/bin:$PATH
+export PATH=$HOME/.nix-profile/bin:/opt/homebrew/bin:$HOME/.local/bin:$HOME/.local/share/aquaproj-aqua/bin:$PATH
 
 # Nix
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
@@ -38,9 +38,6 @@ export GOPATH=~/
 export GO11MODULE=on
 export GOROOT=$(go env GOROOT)
 export PATH="$PATH:$GOROOT/bin"
-
-# direnv
-direnv hook fish | source
 
 # terraform
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"

@@ -8,9 +8,6 @@
   username = "kurashima-wataru";
 in {
   nixpkgs = {
-    overlays = [
-      inputs.neovim-nightly-overlay.overlays.default
-    ];
     config = {
       allowUnfree = true;
     };
@@ -31,6 +28,9 @@ in {
       gh
       neovim
       lefthook
+      aws-vault
+      nodejs_24
+      go
     ];
   };
 
