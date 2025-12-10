@@ -46,6 +46,7 @@
       "karabiner-elements"
       "slack"
       "rectangle"
+      "coteditor"
 
       ### Fonts
       "font-google-sans-code"
