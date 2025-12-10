@@ -27,6 +27,7 @@
         AppleShowAllExtensions = true;
         KeyRepeat = 1;
         InitialKeyRepeat = 12;
+        ApplePressAndHoldEnabled = false;
       };
       finder = {
         # 隠しファイルを常に表示する
