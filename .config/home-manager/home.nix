@@ -33,6 +33,7 @@ in {
       go
       shellcheck
       shfmt
+      yamlfmt
     ];
   };
 
