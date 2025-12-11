@@ -34,6 +34,8 @@ in {
       shellcheck
       shfmt
       yamlfmt
+      actionlint
+      typos
     ];
   };
 
