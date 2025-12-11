@@ -1,3 +1,5 @@
+set -euo pipefail
+
 export EDITOR=nvim
 export PATH=$HOME/.nix-profile/bin:/opt/homebrew/bin:$HOME/.local/bin:$HOME/.local/share/aquaproj-aqua/bin:$PATH
 
@@ -56,3 +58,67 @@ function random_string() {
         cat /dev/urandom | base64 | fold -w $1 | head -n 1
     fi
 }
+
+function cdr() {
+    declare -r git_dir=$(git rev-parse --git-dir)
+    cd "$git_dir/.."
+}
+
+function awsp() {
+    aws configure list-profiles \
+        | fzf
+}
+
+function clear_storage() {
+    aqua vacuum -d 1
+    uv cache clean --force
+    docker system prune --volumes
+    brew cleanup
+    go clean -modcache
+    nix-collect-garbage
+    npm cache clean --force
+}
+
+# function memo() {
+#     declare -r memo_dir="$HOME/Documents/kurashidian/memo"
+#     declare -r template="$memo_dir/template.md"
+#     declare -r today=$(date +%Y-%m-%d)
+#     declare -r today_file="$memo_dir/$today.md"
+#     declare -r editor=nvim
+# 
+#     if [ "$1" = "list" ]; then
+#         ls $memo_dir | fzf | xargs -o -I{} $editor $memo_dir/{}
+#         return
+#     fi
+#     if [ "$1" = "cd" ]; then
+#         cd $memo_dir
+#         return
+#     fi
+# 
+#     # 前回日付を取得
+#     cd $memo_dir
+#     prev=$(basename \
+#              $(ls | grep -oP "[0-9]{4}-[0-9]{2}-[0-9]{2}.md" | sort | grep -v "$today" | tail -1) \
+#              .md)
+#     cd -
+# 
+#     # 今日のメモがなければ作成
+#     if [[ -e $today_file ]]; then
+#         echo "Opening today's memo: $today_file"
+#     else if test -e $template; then
+#         echo "Creating new memo from template: $today_file"
+#         # <[[]] を <[[前日]] に書き換えて新規作成
+#         sed "s/<\[\[\]\]/<\[\[$prev\]\]/" $template > $today_file
+#     else
+#         echo "Template not found: $template"
+#         return 1
+#     fi
+# 
+#     # 前回のメモに当日のメモへのリンク
+#     if [[ -e "$prev".md ]]; then
+#         gsed -i "s;\[\[\]\]>;\[\[$today\]\]>;" "$prev".md
+#     fi
+# 
+#     $editor $today_file
+# }
+# 
