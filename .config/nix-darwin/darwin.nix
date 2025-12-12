@@ -25,7 +25,7 @@
     defaults = {
       NSGlobalDomain = {
         AppleShowAllExtensions = true;
-        KeyRepeat = 1;
+        KeyRepeat = 2;
         InitialKeyRepeat = 12;
         ApplePressAndHoldEnabled = false;
       };
