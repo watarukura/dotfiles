@@ -36,8 +36,10 @@ in {
       shellcheck
       shfmt
       yamlfmt
-      actionlint
       typos
+      actionlint
+      zizmor
+      pinact
     ];
   };
 
