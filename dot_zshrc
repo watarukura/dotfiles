@@ -43,7 +43,7 @@ export PATH="$PATH:$GOROOT/bin"
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
 # direnv
-direnv hook zsh | source
+eval "$(direnv hook zsh)"
 
 # zsh-autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
