@@ -40,6 +40,8 @@ in {
       actionlint
       zizmor
       pinact
+      mise
+      uv
     ];
   };
 

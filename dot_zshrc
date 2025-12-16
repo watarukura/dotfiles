@@ -51,6 +51,14 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # zsh-syntax-highlighting
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# DockerDesktop
+fpath=($HOME/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+
+# mise
+eval "$($HOME/.local/bin/mise activate zsh)"
+
 # functions
 function random_string() {
   if [ $# -eq 0 ]; then
