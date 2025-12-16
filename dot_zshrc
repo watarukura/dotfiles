@@ -57,7 +57,7 @@ autoload -Uz compinit
 compinit
 
 # mise
-eval "$($HOME/.local/bin/mise activate zsh)"
+eval "$($(which mise) activate zsh)"
 
 # functions
 function random_string() {
