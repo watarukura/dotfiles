@@ -59,6 +59,10 @@ compinit
 # mise
 eval "$($(which mise) activate zsh)"
 
+
+# aws-vault
+eval "$(aws-vault --completion-script-zsh)"
+
 # functions
 function random_string() {
   if [ $# -eq 0 ]; then
@@ -130,4 +134,9 @@ function memo() {
   fi
 
   $EDITOR $today_file
+}
+
+function date_dir() {
+    declare -r dir_name="$HOME/Documents/$(date +'%Y%m%d')_$1"
+    mkdir -p $dir_name && cd $dir_name
 }
