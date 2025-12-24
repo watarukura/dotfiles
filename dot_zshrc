@@ -107,14 +107,6 @@ function memo() {
       cd $memo_dir
       return
     fi
-    if [[ "$1" == "clean" ]]; then
-      cd $memo_dir
-      declare -r YYYY="${today:0:4}"
-      declare -r MM="${today:5:2}"
-      mkdir -p "$YYYY/$MM"
-      mv "$YYYY-$MM-*.md" "$YYYY/$MM"
-      cd -
-    fi
   fi
 
   # 前回日付を取得
