@@ -53,8 +53,13 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # DockerDesktop
 fpath=($HOME/.docker/completions $fpath)
+
+# zsh-completion
 autoload -Uz compinit
-compinit
+# zcompdump をキャッシュ領域へ（遅いHOME/ネットワーク/暗号化領域だと激遅になります）
+ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${ZSH_VERSION}"
+mkdir -p "${ZSH_COMPDUMP:h}"
+compinit -C -d "$ZSH_COMPDUMP"
 
 # mise
 eval "$($(which mise) activate zsh)"
@@ -144,3 +149,8 @@ function date_dir() {
     declare -r dir_name="$HOME/Documents/$(date +'%Y%m%d')_$1"
     mkdir -p $dir_name && cd $dir_name
 }
+
+# .zshrc
+if (which zprof > /dev/null 2>&1) ;then
+  zprof
+fi
