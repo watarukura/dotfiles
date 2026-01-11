@@ -42,6 +42,8 @@ in {
       pinact
       mise
       uv
+      ttyd
+      hyperfine
     ];
   };
 
