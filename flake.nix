@@ -52,3 +52,6 @@
     };
   };
 }
+# see https://zenn.dev/kawarimidoll/articles/7aca17eeb478b5
+# https://github.com/renovatebot/renovate/issues/29721
+# Trick renovate into working: "github:NixOS/nixpkgs/nixpkgs-unstable"
