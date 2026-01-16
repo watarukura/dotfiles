@@ -49,7 +49,6 @@
       "pkg-config"
       "re2c"
       "zlib"
-
     ];
     taps = [
     ];
