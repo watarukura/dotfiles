@@ -17,9 +17,9 @@
         "/aquaproj/*/",
         "/actions/*/"
       ]
-    },
-    "nix": {
-      "enabled": true
     }
-  ]
+  ],
+  "nix": {
+    "enabled": true
+  }
 }
