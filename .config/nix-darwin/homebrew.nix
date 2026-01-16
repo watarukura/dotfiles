@@ -28,6 +28,28 @@
       "zsh-completions"
       "zsh-autosuggestions"
       "zsh-syntax-highlighting"
+
+      # for PHP
+      "libsodium"
+      "libxml2"
+      "sqlite"
+      "autoconf"
+      "automake"
+      "bison"
+      "freetype"
+      "gd"
+      "gettext"
+      "icu4c@78"
+      "krb5"
+      "libedit"
+      "libiconv"
+      "libjpeg"
+      "libpng"
+      "libzip"
+      "pkg-config"
+      "re2c"
+      "zlib"
+
     ];
     taps = [
     ];

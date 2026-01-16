@@ -64,6 +64,10 @@ compinit -C -d "$ZSH_COMPDUMP"
 # mise
 eval "$($(which mise) activate zsh)"
 
+# php
+export PKG_CONFIG_PATH="/opt/homebrew/opt/sqlite/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/zlib/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PHP_CONFIGURE_OPTIONS="--with-openssl=$(brew --prefix openssl) --with-iconv=$(brew --prefix libiconv)"
 
 # aws-vault
 eval "$(aws-vault --completion-script-zsh)"
