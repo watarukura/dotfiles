@@ -28,6 +28,7 @@
       "zsh-completions"
       "zsh-autosuggestions"
       "zsh-syntax-highlighting"
+      "k1LoW/tap/git-wt"
 
       # for PHP
       "libsodium"
@@ -36,6 +37,7 @@
       "autoconf"
       "automake"
       "bison"
+      "bzip2"
       "freetype"
       "gd"
       "gettext"
@@ -49,8 +51,11 @@
       "pkg-config"
       "re2c"
       "zlib"
+      "oniguruma"
+      "openssl@1.1"
     ];
     taps = [
+      "k1LoW/tap"
     ];
     casks = [
       ### GUI Applications
