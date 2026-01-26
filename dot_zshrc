@@ -1,5 +1,5 @@
 export EDITOR=nvim
-export PATH=$HOME/.nix-profile/bin:/opt/homebrew/bin:$HOME/.local/bin:$HOME/.local/share/aquaproj-aqua/bin:$PATH
+export PATH=$HOME/.nix-profile/bin:/opt/homebrew/bin:$HOME/.local/bin:$HOME/.local/share/aquaproj-aqua/bin:$HOME/bin:$PATH
 
 # Nix
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
@@ -147,6 +147,34 @@ function memo() {
   fi
 
   $EDITOR $today_file
+}
+
+function todo() {
+  declare -r todo_dir="$HOME/Documents/kurashidian/todo"
+  declare -r template="$todo_dir/template.md"
+
+  if [[ $# -ge 1 ]]; then
+    if [[ "$1" == "list" ]]; then
+      ls $todo_dir | fzf | xargs -o -I{} $EDITOR $todo_dir/{}
+      return
+    fi
+    if [[ "$1" == "cd" ]]; then
+      cd $todo_dir
+      return
+    fi
+    if [[ "$1" == "$(basename $todo_dir/$1.md .md)" ]]; then
+      $EDITOR "$todo_dir/$1".md
+      return
+    fi
+    sed -e 's/{{YYYY-mm-dd}}/'$(date +%Y-%m-%d)'/' \
+        -e 's/{{title}}/'"$1"'/' \
+        -e 's/{{project}}/'"${2:-}"'/' $template >"$todo_dir/$1.md"
+    $EDITOR "$todo_dir/$1".md
+  else
+    cd $todo_dir
+    $EDOTOR
+    cd -
+  fi
 }
 
 function date_dir() {
