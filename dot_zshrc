@@ -60,6 +60,8 @@ autoload -Uz compinit
 ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${ZSH_VERSION}"
 mkdir -p "${ZSH_COMPDUMP:h}"
 compinit -C -d "$ZSH_COMPDUMP"
+# zsh-abbr
+source /opt/homebrew/share/zsh-abbr@6/zsh-abbr.zsh
 
 # mise
 eval "$($(which mise) activate zsh)"
