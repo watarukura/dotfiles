@@ -153,7 +153,7 @@ function todo() {
   declare -r todo_dir="$HOME/Documents/kurashidian/todo"
   declare -r template="$todo_dir/template.md"
 
-  if [[ $# -ge 1 ]]; then
+  if [[ $# -eq 1 ]]; then
     if [[ "$1" == "list" ]]; then
       ls $todo_dir | fzf | xargs -o -I{} $EDITOR $todo_dir/{}
       return
@@ -166,9 +166,18 @@ function todo() {
       $EDITOR "$todo_dir/$1".md
       return
     fi
+
+    set -xv
+    sed -e 's/{{YYYY-mm-dd}}/'$(date +%Y-%m-%d)'/' \
+        -e 's/{{title}}/'"$1"'/' $template >"$todo_dir/$1.md"
+    set +xv
+    $EDITOR "$todo_dir/$1".md
+  elif [[ $# -eq 2 ]]; then
+    set -xv
     sed -e 's/{{YYYY-mm-dd}}/'$(date +%Y-%m-%d)'/' \
         -e 's/{{title}}/'"$1"'/' \
-        -e 's/{{project}}/'"${2:-}"'/' $template >"$todo_dir/$1.md"
+        -e 's/{{project}}/'"$2"'/' $template >"$todo_dir/$1.md"
+    set +xv
     $EDITOR "$todo_dir/$1".md
   else
     cd $todo_dir
@@ -184,5 +193,5 @@ function date_dir() {
 
 # .zshrc
 if (which zprof > /dev/null 2>&1) ;then
-  zprof
+  # zprof
 fi
