@@ -14,24 +14,24 @@ eval "$(starship init zsh)"
 export LESS='--no-init --IGNORE-CASE --RAW-CONTROL-CHARS --LONG-PROMPT'
 
 # alias
-alias la='ls -la'
-alias ll='ls -l'
-alias rm='rm -i'
-alias mv='mv -i'
-alias view='vim -R'
-alias ls='gls --color=auto'
-alias sed='gsed'
-alias awk='gawk'
-alias split='gsplit'
-alias find='gfind'
-alias xargs='gxargs'
-alias zcat='gzcat'
-alias date='gdate'
-alias grep='ggrep'
-alias du='gdu'
-alias ping='ping -c 5'
-alias pip='pip3'
-alias python='python3'
+abbr la='ls -la'
+abbr ll='ls -l'
+abbr rm='rm -i'
+abbr mv='mv -i'
+abbr view='vim -R'
+abbr ls='gls --color=auto'
+abbr sed='gsed'
+abbr awk='gawk'
+abbr split='gsplit'
+abbr find='gfind'
+abbr xargs='gxargs'
+abbr zcat='gzcat'
+abbr date='gdate'
+abbr grep='ggrep'
+abbr du='gdu'
+abbr ping='ping -c 5'
+abbr pip='pip3'
+abbr python='python3'
 
 # golang
 export GOPATH=~/
@@ -197,3 +197,11 @@ function date_dir() {
 if (which zprof > /dev/null 2>&1) ;then
   # zprof
 fi
+
+function git_branch_prune() {
+    declare -r stale_branches=$(git branch | awk '{print $NF}' | grep -v -E "main|master|develop|release")
+    if [ -n "$stale_branches" ]; then
+        echo $stale_branches \
+            | xargs git branch -d
+    fi
+}
