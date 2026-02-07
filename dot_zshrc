@@ -154,31 +154,46 @@ function memo() {
 function todo() {
   declare -r todo_dir="$HOME/Documents/kurashidian/todo"
   declare -r template="$todo_dir/template.md"
+  declare -r today=$(date +%Y-%m-%d)
 
   if [[ $# -eq 1 ]]; then
     if [[ "$1" == "list" ]]; then
-      ls $todo_dir | fzf | xargs -o -I{} $EDITOR $todo_dir/{}
+      yq --front-matter=extract '[.title, .created_at, .project|""] |@tsv ' "$todo_dir/*.md" |
+        fzf | cut -f1 | xargs -I{} $EDITOR "$todo_dir/{}.md"
       return
     fi
     if [[ "$1" == "cd" ]]; then
       cd $todo_dir
       return
     fi
-    if [[ "$1" == "$(basename $todo_dir/$1.md .md)" ]]; then
+    if [[ -e $todo_dir/$1.md ]]; then
       $EDITOR "$todo_dir/$1".md
       return
     fi
 
     set -xv
-    sed -e 's/{{YYYY-mm-dd}}/'$(date +%Y-%m-%d)'/' \
-        -e 's/{{title}}/'"$1"'/' $template >"$todo_dir/$1.md"
+    cat <<EOS >"$todo_dir/$1.md"
+---
+title:
+created_at:
+---
+EOS
+    yq --front-matter=process '.title="'$1'"' "$todo_dir/$1.md" -i
+    yq --front-matter=process '.created_at="'$today'"' "$todo_dir/$1.md" -i
     set +xv
     $EDITOR "$todo_dir/$1".md
   elif [[ $# -eq 2 ]]; then
     set -xv
-    sed -e 's/{{YYYY-mm-dd}}/'$(date +%Y-%m-%d)'/' \
-        -e 's/{{title}}/'"$1"'/' \
-        -e 's/{{project}}/'"$2"'/' $template >"$todo_dir/$1.md"
+    cat <<EOS >"$todo_dir/$1.md"
+---
+title:
+created_at:
+project:
+---
+EOS
+    yq --front-matter=process '.title="'$1'"' "$todo_dir/$1.md" -i
+    yq --front-matter=process '.project="'$2'"' "$todo_dir/$1.md" -i
+    yq --front-matter=process '.created_at="'$today'"' "$todo_dir/$1.md" -i
     set +xv
     $EDITOR "$todo_dir/$1".md
   else
@@ -189,19 +204,14 @@ function todo() {
 }
 
 function date_dir() {
-    declare -r dir_name="$HOME/Documents/$(date +'%Y%m%d')_$1"
-    mkdir -p $dir_name && cd $dir_name
+  declare -r dir_name="$HOME/Documents/$(date +'%Y%m%d')_$1"
+  mkdir -p $dir_name && cd $dir_name
 }
 
-# .zshrc
-if (which zprof > /dev/null 2>&1) ;then
-  # zprof
-fi
-
 function git_branch_prune() {
-    declare -r stale_branches=$(git branch | awk '{print $NF}' | grep -v -E "main|master|develop|release")
-    if [ -n "$stale_branches" ]; then
-        echo $stale_branches \
-            | xargs git branch -d
-    fi
+  declare -r stale_branches=$(git branch | awk '{print $NF}' | grep -v -E "main|master|develop|release")
+  if [ -n "$stale_branches" ]; then
+    echo $stale_branches |
+      xargs git branch -d
+  fi
 }
