@@ -14,24 +14,24 @@ eval "$(starship init zsh)"
 export LESS='--no-init --IGNORE-CASE --RAW-CONTROL-CHARS --LONG-PROMPT'
 
 # alias
-abbr la='ls -la'
-abbr ll='ls -l'
-abbr rm='rm -i'
-abbr mv='mv -i'
-abbr view='vim -R'
-abbr ls='gls --color=auto'
-abbr sed='gsed'
-abbr awk='gawk'
-abbr split='gsplit'
-abbr find='gfind'
-abbr xargs='gxargs'
-abbr zcat='gzcat'
-abbr date='gdate'
-abbr grep='ggrep'
-abbr du='gdu'
-abbr ping='ping -c 5'
-abbr pip='pip3'
-abbr python='python3'
+alias la='ls -la'
+alias ll='ls -l'
+alias rm='rm -i'
+alias mv='mv -i'
+alias view='vim -R'
+alias ls='gls --color=auto'
+alias sed='gsed'
+alias awk='gawk'
+alias split='gsplit'
+alias find='gfind'
+alias xargs='gxargs'
+alias zcat='gzcat'
+alias date='gdate'
+alias grep='ggrep'
+alias du='gdu'
+alias ping='ping -c 5'
+alias pip='pip3'
+alias python='python3'
 
 # golang
 export GOPATH=~/
@@ -60,8 +60,6 @@ autoload -Uz compinit
 ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${ZSH_VERSION}"
 mkdir -p "${ZSH_COMPDUMP:h}"
 compinit -C -d "$ZSH_COMPDUMP"
-# zsh-abbr
-source /opt/homebrew/share/zsh-abbr@6/zsh-abbr.zsh
 
 # mise
 eval "$($(which mise) activate zsh)"
@@ -158,12 +156,21 @@ function todo() {
 
   if [[ $# -eq 1 ]]; then
     if [[ "$1" == "list" ]]; then
-      yq --front-matter=extract '[.title, .created_at, .project|""] |@tsv ' "$todo_dir/*.md" |
+      yq --front-matter=extract '[.title, .created_at, .project|""] |@tsv ' "$todo_dir/"*.md |
         fzf | cut -f1 | xargs -I{} $EDITOR "$todo_dir/{}.md"
       return
     fi
     if [[ "$1" == "cd" ]]; then
       cd $todo_dir
+      return
+    fi
+    if [[ "$1" == "done" ]]; then
+      set -xv
+      donefile=$(ls "$todo_dir/"*.md | xargs -I{} basename {} .md |fzf)
+        yq --front-matter=process '. + {"finished_at": "'$today'"}' "$todo_dir/$donefile.md" -i
+      mkdir -p "$todo_dir/done/$today/"
+      mv "$todo_dir/$donefile.md" "$todo_dir/done/$today/"
+      set +xv
       return
     fi
     if [[ -e $todo_dir/$1.md ]]; then

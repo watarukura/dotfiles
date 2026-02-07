@@ -30,7 +30,6 @@
       "zsh-syntax-highlighting"
       "k1LoW/tap/git-wt"
       "mq"
-      "olets/tap/zsh-abbr@6"
 
       # for PHP
       "libsodium"
@@ -58,7 +57,6 @@
     ];
     taps = [
       "k1LoW/tap"
-      "olets/tap"
     ];
     casks = [
       ### GUI Applications
