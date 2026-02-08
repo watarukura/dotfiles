@@ -150,14 +150,19 @@ function memo() {
 }
 
 function todo() {
-  declare -r todo_dir="$HOME/Documents/kurashidian/todo"
-  declare -r template="$todo_dir/template.md"
-  declare -r today=$(date +%Y-%m-%d)
+  local todo_dir="$HOME/Documents/kurashidian/todo"
+  local template="$todo_dir/template.md"
+  local today=$(date +%Y-%m-%d)
+  local escaped_filename=$(echo $1 | sed -e 's/{} 　\/:;\*\?\<\>\|\(\)\[\]\,\~\\/_/g')
 
   if [[ $# -eq 1 ]]; then
     if [[ "$1" == "list" ]]; then
-      yq --front-matter=extract '[.title, .created_at, .project|""] |@tsv ' "$todo_dir/"*.md |
-        fzf | cut -f1 | xargs -I{} $EDITOR "$todo_dir/{}.md"
+      ls "$todo_dir/"*.md |
+        while read -r todo_file; do
+          yq --front-matter=extract \
+            '[.title, .created_at, .project|"", strenv(today_file)] |@tsv ' "$todo_dir/"*.md |
+            fzf | cut -f1 | xargs -I{} $EDITOR "$todo_dir/{}.md"
+        done
       return
     fi
     if [[ "$1" == "cd" ]]; then
@@ -166,10 +171,11 @@ function todo() {
     fi
     if [[ "$1" == "done" ]]; then
       set -xv
-      donefile=$(ls "$todo_dir/"*.md | xargs -I{} basename {} .md |fzf)
-        yq --front-matter=process '. + {"finished_at": "'$today'"}' "$todo_dir/$donefile.md" -i
+      donefile=$(ls "$todo_dir/"*.md | xargs -I{} basename {} | fzf)
+      today="$today" \
+        yq --front-matter=process '. + {"finished_at": strenv(today)}' "$todo_dir/$donefile" -i
       mkdir -p "$todo_dir/done/$today/"
-      mv "$todo_dir/$donefile.md" "$todo_dir/done/$today/"
+      mv "$todo_dir/$donefile" "$todo_dir/done/$today/"
       set +xv
       return
     fi
@@ -179,33 +185,25 @@ function todo() {
     fi
 
     set -xv
-    cat <<EOS >"$todo_dir/$1.md"
----
-title:
-created_at:
----
-EOS
-    yq --front-matter=process '.title="'$1'"' "$todo_dir/$1.md" -i
-    yq --front-matter=process '.created_at="'$today'"' "$todo_dir/$1.md" -i
+    printf -- "---\n{}\n---\n" >"$todo_dir/$escaped_filename.md"
+    title="$1" today="$today" \
+      yq --front-matter=process \
+      '. + {"title": strenv(title), "created_at": strenv(today)}' \
+      "$todo_dir/$escaped_filename.md" -i
     set +xv
-    $EDITOR "$todo_dir/$1".md
+    $EDITOR "$todo_dir/$escaped_filename".md
   elif [[ $# -eq 2 ]]; then
     set -xv
-    cat <<EOS >"$todo_dir/$1.md"
----
-title:
-created_at:
-project:
----
-EOS
-    yq --front-matter=process '.title="'$1'"' "$todo_dir/$1.md" -i
-    yq --front-matter=process '.project="'$2'"' "$todo_dir/$1.md" -i
-    yq --front-matter=process '.created_at="'$today'"' "$todo_dir/$1.md" -i
+    printf -- "---\n{}\n---\n" >"$todo_dir/$escaped_filename.md"
+    title="$1" today="$today" project="$2" \
+      yq --front-matter=process \
+      '. + {"title": strenv(title), "created_at": strenv(today), "project": strenv(project)}' \
+      "$todo_dir/$escaped_filename.md" -i
     set +xv
-    $EDITOR "$todo_dir/$1".md
+    $EDITOR "$todo_dir/$escaped_filename".md
   else
     cd $todo_dir
-    $EDOTOR
+    printf -- "---\n{}\n---\n" | $EDOTOR
     cd -
   fi
 }
