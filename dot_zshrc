@@ -149,61 +149,6 @@ function memo() {
   $EDITOR $today_file
 }
 
-function todo() {
-  local todo_dir="$HOME/Documents/kurashidian/todo"
-  local today=$(date +%Y-%m-%d)
-  local escaped_filename=$(echo $1 | sed -e 's;/;_;g' -e 's;\x0;;g')
-
-  if [[ $# -eq 1 ]]; then
-    if [[ "$1" == "list" ]]; then
-      ls "$todo_dir/"*.md |
-        xargs basename |
-        while read -r todo_file; do
-          todo_file="$todo_file" \
-          yq --front-matter=extract \
-            '[.title, .created_at, .project|"", strenv(todo_file)] |@tsv' \
-            "$todo_dir/$todo_file" |
-            fzf | cut -f4 | xargs -I{} $EDITOR "$todo_dir/{}"
-        done
-      return
-    fi
-    if [[ "$1" == "cd" ]]; then
-      cd $todo_dir
-      return
-    fi
-    if [[ "$1" == "done" ]]; then
-      donefile=$(ls "$todo_dir/"*.md | xargs -I{} basename {} | fzf)
-      today="$today" \
-        yq --front-matter=process '. + {"finished_at": strenv(today)}' "$todo_dir/$donefile" -i
-      mkdir -p "$todo_dir/done/$today/"
-      mv "$todo_dir/$donefile" "$todo_dir/done/$today/"
-      return
-    fi
-    if [[ -e $todo_dir/$1.md ]]; then
-      $EDITOR "$todo_dir/$1".md
-      return
-    fi
-
-    printf -- "---\n{}\n---\n" >"$todo_dir/$escaped_filename.md"
-    title="$1" today="$today" \
-      yq --front-matter=process \
-      '. + {"title": strenv(title), "created_at": strenv(today)}' \
-      "$todo_dir/$escaped_filename.md" -i
-    $EDITOR "$todo_dir/$escaped_filename".md
-  elif [[ $# -eq 2 ]]; then
-    printf -- "---\n{}\n---\n" >"$todo_dir/$escaped_filename.md"
-    title="$1" today="$today" project="$2" \
-      yq --front-matter=process \
-      '. + {"title": strenv(title), "created_at": strenv(today), "project": strenv(project)}' \
-      "$todo_dir/$escaped_filename.md" -i
-    $EDITOR "$todo_dir/$escaped_filename".md
-  else
-    cd $todo_dir
-    printf -- "---\n{}\n---\n" | $EDOTOR
-    cd -
-  fi
-}
-
 function date_dir() {
   declare -r dir_name="$HOME/Documents/$(date +'%Y%m%d')_$1"
   mkdir -p $dir_name && cd $dir_name
