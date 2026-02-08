@@ -1,5 +1,6 @@
 export EDITOR=nvim
 export PATH=$HOME/.nix-profile/bin:/opt/homebrew/bin:$HOME/.local/bin:$HOME/.local/share/aquaproj-aqua/bin:$HOME/bin:$PATH
+export TODO_DIR=$HOME/Documents/kurashidian/todo
 
 # Nix
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
