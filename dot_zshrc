@@ -151,17 +151,19 @@ function memo() {
 
 function todo() {
   local todo_dir="$HOME/Documents/kurashidian/todo"
-  local template="$todo_dir/template.md"
   local today=$(date +%Y-%m-%d)
-  local escaped_filename=$(echo $1 | sed -e 's/{} 　\/:;\*\?\<\>\|\(\)\[\]\,\~\\/_/g')
+  local escaped_filename=$(echo $1 | sed -e 's;/;_;g' -e 's;\x0;;g')
 
   if [[ $# -eq 1 ]]; then
     if [[ "$1" == "list" ]]; then
       ls "$todo_dir/"*.md |
+        xargs basename |
         while read -r todo_file; do
+          todo_file="$todo_file" \
           yq --front-matter=extract \
-            '[.title, .created_at, .project|"", strenv(today_file)] |@tsv ' "$todo_dir/"*.md |
-            fzf | cut -f1 | xargs -I{} $EDITOR "$todo_dir/{}.md"
+            '[.title, .created_at, .project|"", strenv(todo_file)] |@tsv' \
+            "$todo_dir/$todo_file" |
+            fzf | cut -f4 | xargs -I{} $EDITOR "$todo_dir/{}"
         done
       return
     fi
@@ -170,13 +172,11 @@ function todo() {
       return
     fi
     if [[ "$1" == "done" ]]; then
-      set -xv
       donefile=$(ls "$todo_dir/"*.md | xargs -I{} basename {} | fzf)
       today="$today" \
         yq --front-matter=process '. + {"finished_at": strenv(today)}' "$todo_dir/$donefile" -i
       mkdir -p "$todo_dir/done/$today/"
       mv "$todo_dir/$donefile" "$todo_dir/done/$today/"
-      set +xv
       return
     fi
     if [[ -e $todo_dir/$1.md ]]; then
@@ -184,22 +184,18 @@ function todo() {
       return
     fi
 
-    set -xv
     printf -- "---\n{}\n---\n" >"$todo_dir/$escaped_filename.md"
     title="$1" today="$today" \
       yq --front-matter=process \
       '. + {"title": strenv(title), "created_at": strenv(today)}' \
       "$todo_dir/$escaped_filename.md" -i
-    set +xv
     $EDITOR "$todo_dir/$escaped_filename".md
   elif [[ $# -eq 2 ]]; then
-    set -xv
     printf -- "---\n{}\n---\n" >"$todo_dir/$escaped_filename.md"
     title="$1" today="$today" project="$2" \
       yq --front-matter=process \
       '. + {"title": strenv(title), "created_at": strenv(today), "project": strenv(project)}' \
       "$todo_dir/$escaped_filename.md" -i
-    set +xv
     $EDITOR "$todo_dir/$escaped_filename".md
   else
     cd $todo_dir
