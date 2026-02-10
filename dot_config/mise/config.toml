@@ -1,4 +1,4 @@
 [tools]
 python = "prefix:3.13"
-php = "8.3"
+php = "8.5.3"
 node = "24"
