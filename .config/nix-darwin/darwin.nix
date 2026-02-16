@@ -34,6 +34,7 @@
         AppleShowAllFiles = true;
         # 拡張子を常に表示する
         AppleShowAllExtensions = true;
+        _FXShowPosixPathInTitle = true;
       };
       dock = {
         autohide = true;

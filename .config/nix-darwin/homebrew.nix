@@ -30,6 +30,8 @@
       "zsh-syntax-highlighting"
       "k1LoW/tap/git-wt"
       "mq"
+      "datadog/pack/pup"
+      "gemini-cli"
 
       # for PHP
       "libsodium"
@@ -54,9 +56,15 @@
       "zlib"
       "oniguruma"
       "openssl@1.1"
+      "binutils"
+      "enchant"
+      "libxpm"
+      "sqlite"
+      "curl"
     ];
     taps = [
       "k1LoW/tap"
+      "datadog/pack"
     ];
     casks = [
       ### GUI Applications

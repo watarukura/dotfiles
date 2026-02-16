@@ -44,6 +44,9 @@ in {
       uv
       ttyd
       hyperfine
+      bat
+      rclone
+      google-cloud-sdk
     ];
   };
 
