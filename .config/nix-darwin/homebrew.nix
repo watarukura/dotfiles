@@ -4,6 +4,7 @@
     onActivation = {
       autoUpdate = true;
       cleanup = "uninstall";
+      upgrade = true;
     };
     caskArgs = {
       appdir = "~/Applications";
