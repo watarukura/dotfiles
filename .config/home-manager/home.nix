@@ -47,6 +47,9 @@ in {
       bat
       rclone
       google-cloud-sdk
+      ripgrep
+      mysql80
+      ssm-session-manager-plugin
     ];
   };
 

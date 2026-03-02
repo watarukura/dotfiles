@@ -30,9 +30,7 @@
       "zsh-autosuggestions"
       "zsh-syntax-highlighting"
       "k1LoW/tap/git-wt"
-      "mq"
       "datadog/pack/pup"
-      "gemini-cli"
 
       # for PHP
       "libsodium"
@@ -66,6 +64,16 @@
     taps = [
       "k1LoW/tap"
       "datadog/pack"
+      {
+          name = "dmm-com/internal-oss-homebrew-tap";
+          clone_target = "https://github.com/dmm-com/internal-oss-homebrew-tap.git";
+          force_auto_update = true;
+      }
+      {
+          name = "dmm-com/internal-oss-teamspirit-cli";
+          clone_target = "https://github.com/dmm-com/internal-oss-teamspirit-cli.git";
+          force_auto_update = true;
+      }
     ];
     casks = [
       ### GUI Applications
