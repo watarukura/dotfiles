@@ -30,7 +30,10 @@
       "zsh-autosuggestions"
       "zsh-syntax-highlighting"
       "k1LoW/tap/git-wt"
+      "k1LoW/tap/mo"
+      "deck"
       "datadog/pack/pup"
+      "teamspirit-cli"
 
       # for PHP
       "libsodium"
@@ -65,14 +68,14 @@
       "k1LoW/tap"
       "datadog/pack"
       {
-          name = "dmm-com/internal-oss-homebrew-tap";
-          clone_target = "https://github.com/dmm-com/internal-oss-homebrew-tap.git";
-          force_auto_update = true;
+        name = "dmm-com/internal-oss-homebrew-tap";
+        clone_target = "https://github.com/dmm-com/internal-oss-homebrew-tap.git";
+        force_auto_update = true;
       }
       {
-          name = "dmm-com/internal-oss-teamspirit-cli";
-          clone_target = "https://github.com/dmm-com/internal-oss-teamspirit-cli.git";
-          force_auto_update = true;
+        name = "dmm-com/internal-oss-teamspirit-cli";
+        clone_target = "https://github.com/dmm-com/internal-oss-teamspirit-cli.git";
+        force_auto_update = true;
       }
     ];
     casks = [
