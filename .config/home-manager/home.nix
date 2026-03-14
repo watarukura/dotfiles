@@ -49,6 +49,7 @@ in {
       ripgrep
       mysql80
       ssm-session-manager-plugin
+      nkf
     ];
   };
 
