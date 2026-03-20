@@ -103,51 +103,85 @@ function clear_storage() {
 }
 
 function memo() {
-  declare -r memo_dir="$HOME/Documents/kurashidian/memo"
-  declare -r template="$memo_dir/template.md"
-  declare -r today=$(date +%Y-%m-%d)
-  declare -r today_file="$memo_dir/$today.md"
+  local memo_dir="$HOME/Documents/kurashidian/memo"
+  local template="$memo_dir/template.md"
+  local today=$(date +%Y-%m-%d)
+
+  local year_month=$(date +%Y/%m)
+  local today_dir="$memo_dir/$year_month"
+  local today_file="$today_dir/$today.md"
 
   if [[ $# -ge 1 ]]; then
     if [[ "$1" == "list" ]]; then
-      ls $memo_dir | fzf | xargs -o -I{} $EDITOR $memo_dir/{}
+      local selected
+      selected=$(
+        find "$memo_dir" -type f -name "*.md" \
+          ! -name "template.md" \
+          | sed "s|^$memo_dir/||" \
+          | sort -r \
+          | fzf --preview "fzf-preview.sh '$memo_dir/{}'"
+      ) || return
+    
+      "$EDITOR" "$memo_dir/$selected"
       return
     fi
     if [[ "$1" == "cd" ]]; then
-      cd $memo_dir
+      cd "$memo_dir" || return 1
       return
     fi
-    if [[ "$1" == [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]".md" ]]; then
-      $EDITOR "$memo_dir/$1"
+
+    if [[ "$1" == [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].md ]]; then
+      local target
+      target=$(find "$memo_dir" -type f -name "$1" | head -1)
+      if [[ -n "$target" ]]; then
+        "$EDITOR" "$target"
+      else
+        echo "Memo not found: $1"
+        return 1
+      fi
       return
     fi
   fi
 
-  # 前回日付を取得
-  cd $memo_dir
-  prev=$(basename \
-    $(ls | grep -oP "[0-9]{4}-[0-9]{2}-[0-9]{2}.md" | sort | grep -v "$today" | tail -1) \
-    .md)
-  cd -
+  # 今日の保存先ディレクトリを作成
+  mkdir -p "$today_dir" || return 1
+
+  # 前回メモを再帰的に検索
+  local prev_file
+  prev_file=$(
+    find "$memo_dir" -type f -name "*.md" \
+      | grep -E '/[0-9]{4}/[0-9]{2}/[0-9]{4}-[0-9]{2}-[0-9]{2}\.md$' \
+      | grep -v "/$today.md$" \
+      | sort \
+      | tail -1
+  )
+
+  local prev=""
+  if [[ -n "$prev_file" ]]; then
+    prev=$(basename "$prev_file" .md)
+  fi
 
   # 今日のメモがなければ作成
-  if [[ -e $today_file ]]; then
+  if [[ -e "$today_file" ]]; then
     echo "Opening today's memo: $today_file"
-  elif [[ -e $template ]]; then
+  elif [[ -e "$template" ]]; then
     echo "Creating new memo from template: $today_file"
-    # <[[]] を <[[前日]] に書き換えて新規作成
-    sed "s/<\[\[\]\]/<\[\[$prev\]\]/" $template >$today_file
+    if [[ -n "$prev" ]]; then
+      sed "s/<\[\[\]\]/<\[\[$prev\]\]/" "$template" > "$today_file"
+    else
+      cp "$template" "$today_file"
+    fi
   else
     echo "Template not found: $template"
     return 1
   fi
 
-  # 前回のメモに当日のメモへのリンク
-  if [[ -e "$prev".md ]]; then
-    gsed -i "s;\[\[\]\]>;\[\[$today\]\]>;" "$prev".md
+  # 前回メモに当日メモへのリンクを追記
+  if [[ -n "$prev_file" && -e "$prev_file" ]]; then
+    sed -i.bak "s;\[\[\]\]>;\[\[$today\]\]>;" "$prev_file" && rm -f "${prev_file}.bak"
   fi
 
-  $EDITOR $today_file
+  "$EDITOR" "$today_file"
 }
 
 function date_dir() {
