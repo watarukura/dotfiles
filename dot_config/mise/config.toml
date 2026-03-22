@@ -1,5 +1,5 @@
 [tools]
 python = "prefix:3.13"
-php = "8.3"
+php = "8.5.4"
 node = "24"
 go = "latest"
