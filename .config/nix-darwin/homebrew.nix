@@ -34,6 +34,7 @@
       "deck"
       "datadog/pack/pup"
       "teamspirit-cli"
+      "azure-cli"
 
       # for PHP
       "libsodium"

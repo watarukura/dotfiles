@@ -74,6 +74,11 @@ export PHP_CONFIGURE_OPTIONS="--with-openssl=$(brew --prefix openssl) --with-ico
 # aws-vault
 eval "$(aws-vault --completion-script-zsh)"
 
+# completion
+autoload bashcompinit && bashcompinit
+## azure-cli
+source $(brew --prefix)/etc/bash_completion.d/az
+
 # functions
 function random_string() {
   if [ $# -eq 0 ]; then
