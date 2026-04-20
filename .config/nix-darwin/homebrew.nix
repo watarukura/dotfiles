@@ -35,6 +35,8 @@
       "datadog/pack/pup"
       "teamspirit-cli"
       "azure-cli"
+      "mysql-client@8.0"
+      "gh"
 
       # for PHP
       "libsodium"

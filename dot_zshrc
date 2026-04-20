@@ -3,6 +3,11 @@ export PATH=$HOME/.nix-profile/bin:/opt/homebrew/bin:$HOME/.local/bin:$HOME/.moo
 export TODO_DIR=$HOME/Documents/kurashidian/todo
 export MEMO_DIR=$HOME/Documents/kurashidian/memo
 
+# lwm
+export LOCAL_MD_WIKI_PORT=63000
+export LOCAL_MD_WIKI_PAGES_DIR=$HOME/Documents/kurashidian/knowledge
+export LOCAL_MD_WIKI_PUBLIC_DIR=$HOME/Documents/kurashidian/knowledge
+
 # Nix
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'

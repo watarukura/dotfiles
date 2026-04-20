@@ -25,7 +25,6 @@ in {
       tig
       curl
       alejandra
-      gh
       neovim
       lefthook
       aws-vault
@@ -47,9 +46,9 @@ in {
       rclone
       google-cloud-sdk
       ripgrep
-      mysql80
       ssm-session-manager-plugin
       nkf
+      gitleaks
     ];
   };
 
