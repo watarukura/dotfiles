@@ -2,6 +2,7 @@ export EDITOR=nvim
 export PATH=$HOME/.nix-profile/bin:/opt/homebrew/bin:$HOME/.local/bin:$HOME/.moon/bin:$HOME/.local/share/aquaproj-aqua/bin:$HOME/bin:$PATH
 export TODO_DIR=$HOME/Documents/kurashidian/todo
 export MEMO_DIR=$HOME/Documents/kurashidian/memo
+source $HOME/.config/zsh.d/*.zsh
 
 # zsh history
 # @see: https://softantenna.com/blog/long-shell-history/
