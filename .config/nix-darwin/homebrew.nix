@@ -37,6 +37,9 @@
       "azure-cli"
       "mysql-client@8.0"
       "gh"
+      "fujiwara/tap/ecsta"
+      "wget"
+      "direnv"
 
       # for PHP
       "libsodium"
@@ -70,6 +73,7 @@
     taps = [
       "k1LoW/tap"
       "datadog/pack"
+      "fujiwara/tap"
       {
         name = "dmm-com/internal-oss-homebrew-tap";
         clone_target = "https://github.com/dmm-com/internal-oss-homebrew-tap.git";

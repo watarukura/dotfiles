@@ -30,7 +30,6 @@ in {
       aws-vault
       nodejs_24
       duckdb
-      direnv
       shellcheck
       shfmt
       yamlfmt
