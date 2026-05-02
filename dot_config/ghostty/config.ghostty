@@ -11,6 +11,8 @@ background-blur-radius = 20
 macos-titlebar-style = transparent
 font-feature = -calt
 font-feature = -dlig
+font-family = JetBrains Mono
+font-family = Hiragana Sans
 
 keybind = clear
 keybind = super+ctrl+equal=equalize_splits
