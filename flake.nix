@@ -21,13 +21,22 @@
     ...
   } @ inputs: let
     system = "aarch64-darwin";
-    pkgs = import nixpkgs {inherit system;};
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [
+        (final: prev: {
+          direnv = prev.direnv.overrideAttrs (oldAttrs: {
+            doCheck = false;
+          });
+        })
+      ];
+    };
   in {
     apps.${system}.update = {
       type = "app";
       program = toString (pkgs.writeShellScript "update-script" ''
-               nix flake update
-               nix run nixpkgs#home-manager -- switch --flake .#myHomeConfig
+        nix flake update
+        nix run nixpkgs#home-manager -- switch --flake .#myHomeConfig
         sudo nix run nix-darwin -- switch --flake .#my-darwin
       '');
     };
