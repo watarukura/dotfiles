@@ -21,7 +21,6 @@ in {
     stateVersion = "25.11";
 
     packages = with pkgs; [
-      git
       tig
       curl
       alejandra

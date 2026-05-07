@@ -40,6 +40,8 @@
       "fujiwara/tap/ecsta"
       "wget"
       "direnv"
+      "git"
+      "libgit2"
 
       # for PHP
       "libsodium"
