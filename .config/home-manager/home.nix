@@ -36,7 +36,6 @@ in {
       actionlint
       zizmor
       pinact
-      mise
       uv
       ttyd
       hyperfine

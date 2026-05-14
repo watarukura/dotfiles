@@ -42,6 +42,7 @@
       "direnv"
       "git"
       "libgit2"
+      "mise"
 
       # for PHP
       "libsodium"
