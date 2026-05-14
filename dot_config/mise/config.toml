@@ -1,13 +1,15 @@
 [settings]
 minimum_release_age = "7d"
+pin = true
+lockfile = true
 
 [tools]
-python = "prefix:3.13"
+python = "3.13.11"
 php = "8.3"
-node = "26"
-go = "latest"
-pnpm = "latest"
-"npm:@jetbrains/junie-cli" = "latest"
-"npm:corepack" = "latest"
-"npm:difit" = "latest"
-claude = "latest"
+node = "26.1.0"
+go = "1.26.1"
+pnpm = "11.1.1"
+"npm:@jetbrains/junie-cli" = "1468.30.0"
+"npm:corepack" = "0.34.7"
+"npm:difit" = "4.0.5"
+claude = "2.1.126"
