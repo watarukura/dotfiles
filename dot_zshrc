@@ -31,9 +31,9 @@ setopt SHARE_HISTORY
 unsetopt HIST_VERIFY
 
 # lwm
-export LOCAL_MD_WIKI_PORT=63000
-export LOCAL_MD_WIKI_PAGES_DIR=$HOME/Documents/kurashidian/knowledge
-export LOCAL_MD_WIKI_PUBLIC_DIR=$HOME/Documents/kurashidian/knowledge
+export LWM_PORT=63000
+export LWM_PAGES_DIR=$HOME/Documents/kurashidian/knowledge
+export LWM_PUBLIC_DIR=$HOME/Documents/kurashidian/knowledge
 
 # Nix
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
