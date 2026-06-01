@@ -75,6 +75,8 @@ export GOPATH=~/
 export GO11MODULE=on
 export GOROOT=$(go env GOROOT)
 export PATH="$PATH:$GOROOT/bin"
+go env -w GOPROXY=https://golang.flatt.tech
+go env -w GOPRIVATE=github.com/dmm-com/*
 
 # terraform
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
