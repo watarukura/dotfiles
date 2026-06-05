@@ -5,6 +5,7 @@
       autoUpdate = true;
       cleanup = "uninstall";
       upgrade = true;
+      extraFlags = ["--force-cleanup"];
     };
     caskArgs = {
       appdir = "~/Applications";
@@ -43,6 +44,7 @@
       "git"
       "libgit2"
       "mise"
+      "tlipinski/tap/rura"
 
       # for PHP
       "libsodium"
@@ -66,7 +68,6 @@
       "re2c"
       "zlib"
       "oniguruma"
-      "openssl@1.1"
       "binutils"
       "enchant"
       "libxpm"
@@ -77,6 +78,7 @@
       "k1LoW/tap"
       "datadog/pack"
       "fujiwara/tap"
+      "tlipinski/tap"
       {
         name = "dmm-com/internal-oss-homebrew-tap";
         clone_target = "https://github.com/dmm-com/internal-oss-homebrew-tap.git";

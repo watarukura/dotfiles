@@ -48,7 +48,6 @@ in {
       ssm-session-manager-plugin
       nkf
       gitleaks
-      jnv
     ];
   };
 
