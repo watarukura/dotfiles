@@ -19,6 +19,10 @@
       ]
     }
   ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "extends": ["schedule:daily"]
+  },
   "nix": {
     "enabled": true
   }
