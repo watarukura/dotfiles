@@ -45,6 +45,7 @@
       "libgit2"
       "mise"
       "tlipinski/tap/rura"
+      "vim"
 
       # for PHP
       "libsodium"
