@@ -80,16 +80,6 @@
       "datadog/pack"
       "fujiwara/tap"
       "tlipinski/tap"
-      {
-        name = "dmm-com/internal-oss-homebrew-tap";
-        clone_target = "https://github.com/dmm-com/internal-oss-homebrew-tap.git";
-        force_auto_update = true;
-      }
-      {
-        name = "dmm-com/internal-oss-teamspirit-cli";
-        clone_target = "https://github.com/dmm-com/internal-oss-teamspirit-cli.git";
-        force_auto_update = true;
-      }
     ];
     casks = [
       ### GUI Applications
