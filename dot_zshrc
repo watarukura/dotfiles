@@ -108,6 +108,9 @@ export PHP_CONFIGURE_OPTIONS="--with-openssl=$(brew --prefix openssl) --with-ico
 # aws-vault
 eval "$(aws-vault --completion-script-zsh)"
 
+# tirith
+eval "$(tirith init --shell zsh)"
+
 # completion
 autoload bashcompinit && bashcompinit
 ## azure-cli

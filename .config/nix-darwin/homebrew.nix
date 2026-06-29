@@ -47,6 +47,7 @@
       "tlipinski/tap/rura"
       "vim"
       "container"
+      "tirith"
 
       # for PHP
       "libsodium"
