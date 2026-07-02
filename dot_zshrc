@@ -115,6 +115,8 @@ eval "$(tirith init --shell zsh)"
 autoload bashcompinit && bashcompinit
 ## azure-cli
 source $(brew --prefix)/etc/bash_completion.d/az
+# 1password
+eval "$(op completion zsh)"; compdef _op op
 
 # functions
 function random_string() {
