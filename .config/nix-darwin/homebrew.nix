@@ -99,6 +99,7 @@
       "slack"
       "rectangle"
       "coteditor"
+      "visual-studio-code"
 
       ### Fonts
       "font-google-sans-code"
