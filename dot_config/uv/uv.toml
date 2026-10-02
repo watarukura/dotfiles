@@ -1,1 +1,5 @@
+[pip]
 exclude-newer = "1 week"
+[[index]]
+url = "https://pypi.flatt.tech/simple/"
+default = true

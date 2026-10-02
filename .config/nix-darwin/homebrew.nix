@@ -47,6 +47,7 @@
       "tlipinski/tap/rura"
       "vim"
       "container"
+      "magicdrive/tap/ark"
 
       # for PHP
       "libsodium"
@@ -81,6 +82,7 @@
       "datadog/pack"
       "fujiwara/tap"
       "tlipinski/tap"
+      "magicdrive/tap"
     ];
     casks = [
       ### GUI Applications
