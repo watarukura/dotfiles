@@ -76,6 +76,9 @@
       "libxpm"
       "sqlite"
       "curl"
+      "libtiff"
+      "webp"
+      "sqruff"
     ];
     taps = [
       "k1LoW/tap"

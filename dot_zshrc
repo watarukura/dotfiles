@@ -115,6 +115,8 @@ autoload bashcompinit && bashcompinit
 source $(brew --prefix)/etc/bash_completion.d/az
 # 1password
 eval "$(op completion zsh)"; compdef _op op
+# aws-cli
+source $(brew --prefix)/etc/bash_completion.d/aws_bash_completer
 
 # functions
 function random_string() {

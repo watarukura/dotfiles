@@ -11,7 +11,7 @@ background-blur-radius = 20
 macos-titlebar-style = transparent
 font-feature = -calt
 font-feature = -dlig
-font-family = JetBrains Mono
+font-family = "JetBrains Mono", "Noto Sans"
 font-family = Hiragana Sans
 
 keybind = clear
